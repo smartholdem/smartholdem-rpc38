@@ -41,7 +41,7 @@ var networks = {
 function getFromNode(url, cb) {
     var nethash = network ? network.nethash : "";
     if (!url.startsWith("http")) {
-        url = `http://${server}${url}`;
+        url = 'http://${server}${url}';
     }
     request(
         {
@@ -71,10 +71,10 @@ function findEnabledPeers(cb) {
         var respeers = JSON.parse(body).peers.filter(function (peer) {
             return peer.status == "OK";
         }).map(function (peer) {
-            return `${peer.ip}:${peer.port}`;
+            return '${peer.ip}:${peer.port}';
         });
         async.each(respeers, function (peer, eachcb) {
-            getFromNode(`http://${peer}/api/blocks/getHeight`, function (error, res, body2) {
+            getFromNode('http://${peer}/api/blocks/getHeight', function (error, res, body2) {
                 if (!error && body2 != "Forbidden") {
                     peers.push(peer);
                 }
@@ -92,7 +92,7 @@ function findEnabledPeers(cb) {
 function postTransaction(transaction, cb) {
     request(
         {
-            url: `http://${server}/peer/transactions`,
+            url: 'http://${server}/peer/transactions',
             headers: {
                 nethash: network.nethash,
                 version: '0.0.1',
@@ -110,7 +110,7 @@ function broadcast(transaction, callback) {
     network.peers.slice(0, 10).forEach(function (peer) {
         // Console.log("sending to", peer);
         request({
-            url: `http://${peer}/peer/transactions`,
+            url: 'http://${peer}/peer/transactions',
             headers: {
                 nethash: network.nethash,
                 version: '0.0.1',
@@ -153,7 +153,7 @@ function connect(req, res, next) {
         } else {
             res.send({
                 success: false,
-                error: `Could not find network ${req.params.network}`
+                error: 'Could not find network ${req.params.network}'
             });
             res.end();
         }

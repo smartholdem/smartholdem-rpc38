@@ -4,7 +4,7 @@ var network = require('./network');
 var leveldb = require('./leveldb');
 
 function get(req, res, next) {
-  network.getFromNode(`/api/transactions/get?id=${req.params.id}`, function (err, response, body) {
+  network.getFromNode('/api/transactions/get?id=${req.params.id}', function (err, response, body) {
     if(err) next();
     else {
       body = JSON.parse(body);

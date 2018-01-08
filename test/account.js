@@ -89,7 +89,7 @@ describe('Accounts', () => {
 
     it('it should find bip38 backup from userid', (done) => {
       chai.request(server).
-      get(`/mainnet/account/bip38/${userid}`).
+      get('/mainnet/account/bip38/${userid}').
       end((err, res) => {
         res.should.have.status(200);
         res.body.success.should.be.equal(true);
