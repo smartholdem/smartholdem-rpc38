@@ -7,6 +7,8 @@ default port 8081
 
 cd smartholdem-rpc
 
+npm install
+
 run: node server.js
 
 
