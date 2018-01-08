@@ -37,8 +37,7 @@ function getBip38Account(req, res, next){
         wif
       });
       next();
-    }).
-    catch(function (err) {
+    }).catch(function (err) {
       res.send({
         success: false,
         err
@@ -78,8 +77,7 @@ function createBip38(req, res, next) {
           keys,
           wif: encryptedWif
         });
-      }).
-      then(function(account){
+      }).then(function(account){
         res.send({
           success: true,
           publicKey: account.keys.getPublicKeyBuffer().toString("hex"),
@@ -87,8 +85,7 @@ function createBip38(req, res, next) {
           wif: account.wif
         });
         next();
-      }).
-      catch(function (err) {
+      }).catch(function (err) {
         if(err){
           res.send({
             success: false,
