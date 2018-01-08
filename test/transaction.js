@@ -44,7 +44,7 @@ describe('Transactions', () => {
         post('/mainnet/transaction').
         send({
           amount: 100000000,
-          recipientId: "SVx2j3NdZbDLfZ9HWS57NvqYg4c9grQLnx",
+          recipientId: "Sa9JKodiNeM7tbYjxwEhvvG1kBczhQxTN3",
           passphrase: "This is a test"
         }).
         end((err, res) => {

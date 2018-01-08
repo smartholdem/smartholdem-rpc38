@@ -106,7 +106,7 @@ describe('Accounts', () => {
         bip38: "master password",
         userid,
         amount: 1000000000,
-        recipientId: "Sa9JKodiNeM7tbYjxwEhvvG1kBczhQxTN3"
+        recipientId: "SjhmecmNzFpnbVWQygMZ15rYC8vKDdGkfz"
       }).
       end((err, res) => {
         process.stdout.write(".");
