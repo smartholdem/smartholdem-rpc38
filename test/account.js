@@ -59,8 +59,8 @@ describe('Accounts', () => {
       end((err, res) => {
         res.should.have.status(200);
         res.body.success.should.be.equal(true);
-        res.body.account.address.should.be.equal("SVx2j3NdZbDLfZ9HWS57NvqYg4c9grQLnx");
-        res.body.account.publicKey.should.be.equal("03b2000d0e5042e82aed1fe7d7b556ba7cbc921406fe65cc3881652115f843fbb9");
+        res.body.account.address.should.be.equal("Sa9JKodiNeM7tbYjxwEhvvG1kBczhQxTN3");
+        res.body.account.publicKey.should.be.equal("03675c61dcc23eab75f9948c6510b54d34fced4a73d3c9f2132c76a29750e7a614");
         done();
       });
     });
@@ -106,7 +106,7 @@ describe('Accounts', () => {
         bip38: "master password",
         userid,
         amount: 1000000000,
-        recipientId: "SVx2j3NdZbDLfZ9HWS57NvqYg4c9grQLnx"
+        recipientId: "Sa9JKodiNeM7tbYjxwEhvvG1kBczhQxTN3"
       }).
       end((err, res) => {
         process.stdout.write(".");
