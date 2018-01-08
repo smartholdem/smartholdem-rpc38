@@ -6,7 +6,7 @@ var network = require('./network');
 var leveldb = require('./leveldb');
 
 function get(req, res, next) {
-  network.getFromNode(`/api/accounts?address=${req.params.address}`, function (err, response, body) {
+  network.getFromNode('/api/accounts?address=${req.params.address}', function (err, response, body) {
     if(err) next();
     else {
       body = JSON.parse(body);
@@ -18,7 +18,7 @@ function get(req, res, next) {
 
 function getTransactions(req, res, next) {
   const offset = req.query.offset || 0;
-  network.getFromNode(`/api/transactions?offset=${offset}&orderBy=timestamp:desc&senderId=${req.params.address}&recipientId=${req.params.address}`, function(err, response, body) {
+  network.getFromNode('/api/transactions?offset=${offset}&orderBy=timestamp:desc&senderId=${req.params.address}&recipientId=${req.params.address}', function(err, response, body) {
     if(err) next();
     else {
       body = JSON.parse(body);
