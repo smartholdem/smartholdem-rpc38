@@ -19,7 +19,6 @@
     "blockchain",
     "rpc"
   ],
-  "author": "fx thoorens",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/smartholdem/smartholdem-rpc/issues"

@@ -38,23 +38,25 @@ var networks = {
     }
 };
 
+
+
 function getFromNode(url, cb) {
     var nethash = network ? network.nethash : "";
     if (!url.startsWith("http")) {
-        url = 'http://${server}${url}';
+        url = `http://${server}${url}`;
     }
     request(
         {
             url,
             headers: {
                 nethash,
-                version: '0.0.1',
+                version: '0.0.2',
                 port: 1
             },
             timeout: 5000
         },
-        function (error, response, body) {
-            if (error) {
+        function(error, response, body){
+            if(error){
                 server = network.peers[Math.floor(Math.random() * 1000) % network.peers.length];
             }
             cb(error, response, body);
@@ -73,10 +75,10 @@ function findEnabledPeers(cb) {
             return peer.status == "OK";
         }).
         map(function (peer) {
-            return '${peer.ip}:${peer.port};
+            return `${peer.ip}:${peer.port}`;
         });
         async.each(respeers, function (peer, eachcb) {
-            getFromNode('http://${peer}/api/blocks/getHeight', function (error, res, body2) {
+            getFromNode(`http://${peer}/api/blocks/getHeight`, function (error, res, body2) {
                 if (!error && body2 != "Forbidden") {
                     peers.push(peer);
                 }
@@ -94,10 +96,10 @@ function findEnabledPeers(cb) {
 function postTransaction(transaction, cb) {
     request(
         {
-            url: 'http://${server}/peer/transactions',
+            url: `http://${server}/peer/transactions`,
             headers: {
                 nethash: network.nethash,
-                version: '0.0.1',
+                version: '0.0.2',
                 port: 1
             },
             method: 'POST',
@@ -115,7 +117,7 @@ function broadcast(transaction, callback) {
             url: 'http://${peer}/peer/transactions',
             headers: {
                 nethash: network.nethash,
-                version: '0.0.1',
+                version: '0.0.2',
                 port: 1
             },
             method: 'POST',
@@ -155,7 +157,7 @@ function connect(req, res, next) {
         } else {
             res.send({
                 success: false,
-                error: 'Could not find network ${req.params.network}'
+                error: `Could not find network ${req.params.network}`
             });
             res.end();
         }
