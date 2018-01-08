@@ -5,6 +5,8 @@ git clone https://github.com/smartholdem/smartholdem-rpc.git
 
 default port 8081
 
+cd smartholdem-rpc
+
 run: node server.js
 
 
