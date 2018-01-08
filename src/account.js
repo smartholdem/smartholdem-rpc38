@@ -110,6 +110,7 @@ function create(req, res, next) {
     var account = null;
     if(req.params.passphrase){
         account = sthjs.crypto.getKeys(req.params.passphrase);
+        console.log(account);
         res.send({
             success: true,
             account: {
