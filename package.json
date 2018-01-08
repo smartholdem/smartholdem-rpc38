@@ -1,7 +1,7 @@
 {
   "name": "smartholdem-rpc",
-  "version": "1.0.0",
-  "description": "RPC server acting as lite client for SmartHoldem blockchain",
+  "version": "1.0.1",
+  "description": "RPC server acting as client for SmartHoldem",
   "main": "server.js",
   "scripts": {
     "test": "mocha --timeout 20000 --exit",
@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/smartholdem/smartholdem-rpc#readme",
   "dependencies": {
-    "sthjs": "github:smartholdem/sth-js",
+    "sthjs": "git://github.com/smartholdem/sth-js.git",
     "async": "^2.5.0",
     "bigi": "^1.4.2",
     "bip38": "^2.0.1",
