@@ -68,10 +68,12 @@ function findEnabledPeers(cb) {
         if (err || body == "undefined") {
             cb(peers);
         }
-        var respeers = JSON.parse(body).peers.filter(function (peer) {
+        var respeers = JSON.parse(body).peers.
+        filter(function (peer) {
             return peer.status == "OK";
-        }).map(function (peer) {
-            return '${peer.ip}:${peer.port}';
+        }).
+        map(function (peer) {
+            return '${peer.ip}:${peer.port};
         });
         async.each(respeers, function (peer, eachcb) {
             getFromNode('http://${peer}/api/blocks/getHeight', function (error, res, body2) {
