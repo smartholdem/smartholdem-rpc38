@@ -92,6 +92,7 @@ function broadcast(req, res, next) {
     } else leveldb.getObject(req.params.id).
     then(function(transaction){
         transaction = transaction || req.params;
+        console.log(transaction);
         if (!sthjs.crypto.verify(transaction)) {
             res.send({
                 success: false,
