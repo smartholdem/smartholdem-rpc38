@@ -75,10 +75,10 @@ function findEnabledPeers(cb) {
             return peer.status == "OK";
         }).
         map(function (peer) {
-            return '${peer.ip}:${peer.port}';
+            return `${peer.ip}:${peer.port}`;
         });
         async.each(respeers, function (peer, eachcb) {
-            getFromNode('http://${peer}/api/blocks/getHeight', function (error, res, body2) {
+            getFromNode(`http://${peer}/api/blocks/getHeight`, function (error, res, body2) {
                 if (!error && body2 != "Forbidden") {
                     peers.push(peer);
                 }
@@ -114,7 +114,7 @@ function broadcast(transaction, callback) {
     network.peers.slice(0, 10).forEach(function (peer) {
         // Console.log("sending to", peer);
         request({
-            url: 'http://${peer}/peer/transactions',
+            url: `http://${peer}/peer/transactions`,
             headers: {
                 nethash: network.nethash,
                 version: '0.0.2',
