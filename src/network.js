@@ -54,7 +54,7 @@ function getFromNode(url, cb) {
             headers: {
                 nethash,
                 version: '0.0.2',
-                port: 1
+                port: 6100
             },
             timeout: 5000
         },
@@ -103,7 +103,7 @@ function postTransaction(transaction, cb) {
             headers: {
                 nethash: network.nethash,
                 version: '0.0.2',
-                port: 1
+                port: 6100
             },
             method: 'POST',
             json: true,
@@ -121,7 +121,7 @@ function broadcast(transaction, callback) {
             headers: {
                 nethash: network.nethash,
                 version: '0.0.2',
-                port: 1
+                port: 6100
             },
             method: 'POST',
             json: true,
