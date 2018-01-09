@@ -3,7 +3,7 @@ var async = require('async');
 var sthjs = require('sthjs');
 
 var network = null,
-    server = "88.198.67.196:6100";
+    server = null;
 
 var networks = {
     testnet: {
@@ -22,7 +22,20 @@ var networks = {
         slip44: 255,
         version: 63,
         peers: [
-            "88.198.67.196:6100"
+            "88.198.67.196:6100",
+            "195.133.197.97:6100",
+            "194.87.109.123:6100",
+            "195.133.144.144:6100",
+            "194.87.146.50:6100",
+            "195.133.197.108:6100",
+            "195.133.147.131:6100",
+            "194.87.145.149:6100",
+            "194.87.232.27:6100",
+            "195.133.1.3:6100",
+            "91.218.230.11:6100",
+            "95.183.9.179:6100",
+            "95.183.9.190:6100",
+            "95.183.9.191:6100"
         ]
     }
 };
@@ -40,7 +53,7 @@ function getFromNode(url, cb) {
             headers: {
                 nethash,
                 version: '0.0.2',
-                port: 6100
+                port: 1
             },
             timeout: 5000
         },
@@ -83,14 +96,13 @@ function findEnabledPeers(cb) {
 }
 
 function postTransaction(transaction, cb) {
-    console.log('postTransaction',`http://${server}/peer/transactions`)
     request(
         {
             url: `http://${server}/peer/transactions`,
             headers: {
                 nethash: network.nethash,
                 version: '0.0.2',
-                port: 6100
+                port: 1
             },
             method: 'POST',
             json: true,
@@ -108,7 +120,7 @@ function broadcast(transaction, callback) {
             headers: {
                 nethash: network.nethash,
                 version: '0.0.2',
-                port: 6100
+                port: 1
             },
             method: 'POST',
             json: true,
