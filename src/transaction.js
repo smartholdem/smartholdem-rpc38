@@ -93,7 +93,6 @@ function broadcast(req, res, next) {
     then(function(transaction){
         transaction = transaction || req.params;
         console.log('leveldb transaction:',transaction);
-        console.log('sthjs.crypto:',sthjs.crypto.verify(transaction));
         if (!sthjs.crypto.verify(transaction)) {
             res.send({
                 success: false,
@@ -110,8 +109,9 @@ function broadcast(req, res, next) {
             });
             next();
         });
-    }).
-    catch(function(err){
+
+    }).catch(function(err){
+        console.log('err:',err);
         res.send({
             success: false,
             err
