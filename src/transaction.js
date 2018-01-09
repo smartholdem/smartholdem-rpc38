@@ -75,7 +75,6 @@ function getAll(req, res, next) {
 }
 
 function broadcast(req, res, next) {
-    console.log(req.params);
     if(req.params.transactions){ //old way
         Promise.all(
             req.params.transactions.map((transaction) =>
@@ -88,7 +87,6 @@ function broadcast(req, res, next) {
             success: true,
             transactionIds: req.params.transactions.map((tx) => tx.id)
     });
-
         next();
     });
     } else leveldb.getObject(req.params.id).
