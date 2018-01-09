@@ -3,7 +3,7 @@ var async = require('async');
 var sthjs = require('sthjs');
 
 var network = null,
-    server = null;
+    server = "88.198.67.196:6100";
 
 var networks = {
     testnet: {
