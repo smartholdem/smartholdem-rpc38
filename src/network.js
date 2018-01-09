@@ -83,6 +83,7 @@ function findEnabledPeers(cb) {
 }
 
 function postTransaction(transaction, cb) {
+    console.log('postTransaction',`http://${server}/peer/transactions`)
     request(
         {
             url: `http://${server}/peer/transactions`,
