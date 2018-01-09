@@ -76,7 +76,6 @@ function getAll(req, res, next) {
 
 function broadcast(req, res, next) {
     console.log(req.params);
-
     if(req.params.transactions){ //old way
         Promise.all(
             req.params.transactions.map((transaction) =>
