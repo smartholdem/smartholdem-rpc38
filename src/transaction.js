@@ -88,11 +88,11 @@ function broadcast(req, res, next) {
             success: true,
             transactionIds: req.params.transactions.map((tx) => tx.id)
     });
+
         next();
     });
-    } else
-
-        leveldb.getObject(req.params.id).then(function(transaction){
+    } else leveldb.getObject(req.params.id).
+    then(function(transaction){
         transaction = transaction || req.params;
         if (!sthjs.crypto.verify(transaction)) {
             res.send({
@@ -109,7 +109,8 @@ function broadcast(req, res, next) {
             });
             next();
         });
-    }).catch(function(err){
+    }).
+    catch(function(err){
         res.send({
             success: false,
             err
