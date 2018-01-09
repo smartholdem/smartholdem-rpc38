@@ -102,20 +102,21 @@ function broadcast(req, res, next) {
             next();
         }
         network.broadcast(transaction, function () {
-            console.log('broadcast transaction',transaction);
             res.send({
                 success: true,
                 transaction
             });
+            console.log('broadcast transaction',transaction);
             next();
+
         });
 
     }).catch(function(err){
-        console.log('err:',err);
         res.send({
             success: false,
             err
         });
+        console.log('err:');
         next();
     });
 }
