@@ -1,6 +1,6 @@
 var levelup = require('levelup');
 var leveldown = require('leveldown');
-var db = levelup(leveldown('${__dirname}/../storage.leveldb'));
+var db = levelup(leveldown(`${__dirname}/../storage.leveldb`));
 
 
 function getUTF8(id) {
