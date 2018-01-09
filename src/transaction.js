@@ -75,6 +75,8 @@ function getAll(req, res, next) {
 }
 
 function broadcast(req, res, next) {
+    console.log(req.params);
+
     if(req.params.transactions){ //old way
         Promise.all(
             req.params.transactions.map((transaction) =>
@@ -89,8 +91,9 @@ function broadcast(req, res, next) {
     });
         next();
     });
-    } else leveldb.getObject(req.params.id).
-    then(function(transaction){
+    } else
+
+        leveldb.getObject(req.params.id).then(function(transaction){
         transaction = transaction || req.params;
         if (!sthjs.crypto.verify(transaction)) {
             res.send({
@@ -107,8 +110,7 @@ function broadcast(req, res, next) {
             });
             next();
         });
-    }).
-    catch(function(err){
+    }).catch(function(err){
         res.send({
             success: false,
             err

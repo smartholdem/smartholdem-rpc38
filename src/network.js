@@ -75,10 +75,10 @@ function findEnabledPeers(cb) {
             return peer.status == "OK";
         }).
         map(function (peer) {
-            return `${peer.ip}:${peer.port}`;
+            return '${peer.ip}:${peer.port}';
         });
         async.each(respeers, function (peer, eachcb) {
-            getFromNode(`http://${peer}/api/blocks/getHeight`, function (error, res, body2) {
+            getFromNode('http://${peer}/api/blocks/getHeight', function (error, res, body2) {
                 if (!error && body2 != "Forbidden") {
                     peers.push(peer);
                 }
