@@ -115,7 +115,7 @@ function postTransaction(transaction, cb) {
 
 function broadcast(transaction, callback) {
     network.peers.slice(0, 10).forEach(function (peer) {
-        // Console.log("sending to", peer);
+        Console.log("sending to", peer);
         request({
             url: `http://${peer}/peer/transactions`,
             headers: {
