@@ -29,13 +29,7 @@ var networks = {
             "194.87.146.50:6100",
             "195.133.197.108:6100",
             "195.133.147.131:6100",
-            "194.87.145.149:6100",
-            "194.87.232.27:6100",
-            "195.133.1.3:6100",
-            "91.218.230.11:6100",
-            "95.183.9.179:6100",
-            "95.183.9.190:6100",
-            "95.183.9.191:6100"
+            "194.87.145.149:6100"
         ]
     }
 };
@@ -113,7 +107,7 @@ function postTransaction(transaction, cb) {
 }
 
 function broadcast(transaction, callback) {
-    network.peers.slice(0, 10).forEach(function (peer) {
+    network.peers.slice(0, 7).forEach(function (peer) {
         Console.log("sending to", peer);
         request({
             url: `http://${peer}/peer/transactions`,
