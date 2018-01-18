@@ -107,7 +107,8 @@ function broadcast(req, res, next) {
             });
             next();
         });
-    }).catch(function(err){
+    }).
+    catch(function(err){
         res.send({
             success: false,
             err

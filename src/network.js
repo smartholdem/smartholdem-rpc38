@@ -6,16 +6,6 @@ var network = null,
     server = null;
 
 var networks = {
-    testnet: {
-        name: "testnet",
-        nethash: "e1882350a56f22a79d62b903dc2d0fc03c6aae88c6f09908ee3e2d6f1da7e2b3",
-        slip44: 186,
-        version: 66,
-        peers: [
-            "195.133.197.97:4100",
-            "195.133.147.131:4100",
-        ]
-    },
     mainnet: {
         name: "mainnet",
         nethash: "fc46bfaf9379121dd6b09f5014595c7b7bd52a0a6d57c5aff790b42a73c76da7",
@@ -46,7 +36,7 @@ function getFromNode(url, cb) {
             url,
             headers: {
                 nethash,
-                version: '0.0.2',
+                version: '2.0.0',
                 port: 1
             },
             timeout: 5000
@@ -95,7 +85,7 @@ function postTransaction(transaction, cb) {
             url: `http://${server}/peer/transactions`,
             headers: {
                 nethash: network.nethash,
-                version: '0.0.2',
+                version: '1.0.0',
                 port: 1
             },
             method: 'POST',
@@ -108,12 +98,12 @@ function postTransaction(transaction, cb) {
 
 function broadcast(transaction, callback) {
     network.peers.slice(0, 7).forEach(function (peer) {
-        Console.log("sending to", peer);
+        console.log("sending to", peer);
         request({
             url: `http://${peer}/peer/transactions`,
             headers: {
                 nethash: network.nethash,
-                version: '0.0.2',
+                version: '1.0.0',
                 port: 1
             },
             method: 'POST',
