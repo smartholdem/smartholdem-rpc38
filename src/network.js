@@ -13,6 +13,7 @@ var networks = {
         version: 63,
         peers: [
             "88.198.67.196:6100",
+            "213.239.207.170:6100",
             "195.133.197.97:6100",
             "194.87.109.123:6100",
             "195.133.144.144:6100",
@@ -97,7 +98,7 @@ function postTransaction(transaction, cb) {
 }
 
 function broadcast(transaction, callback) {
-    network.peers.slice(0, 7).forEach(function (peer) {
+    network.peers.slice(0, 8).forEach(function (peer) {
         console.log("sending to", peer);
         request({
             url: `http://${peer}/peer/transactions`,
