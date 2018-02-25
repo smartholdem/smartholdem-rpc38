@@ -6,6 +6,18 @@ var network = null,
     server = null;
 
 var networks = {
+    testnet: {
+        name: "testnet",
+        nethash: "e1882350a56f22a79d62b903dc2d0fc03c6aae88c6f09908ee3e2d6f1da7e2b3",
+        slip44: 136,
+        version: 66,
+        peers: [
+            "88.198.67.196:4100",
+            "95.183.9.205:4100",
+            "194.87.109.198:4100",
+            "194.87.232.27:4100"
+        ]
+    },
     mainnet: {
         name: "mainnet",
         nethash: "fc46bfaf9379121dd6b09f5014595c7b7bd52a0a6d57c5aff790b42a73c76da7",
@@ -98,7 +110,7 @@ function postTransaction(transaction, cb) {
 }
 
 function broadcast(transaction, callback) {
-    network.peers.slice(0, 8).forEach(function (peer) {
+    network.peers.slice(0, 10).forEach(function (peer) {
         console.log("sending to", peer);
         request({
             url: `http://${peer}/peer/transactions`,
