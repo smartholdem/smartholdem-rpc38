@@ -1,4 +1,7 @@
 # smartholdem-rpc
+
+[![Build Status](https://travis-ci.org/smartholdem/smartholdem-rpc.svg?branch=master)](https://travis-ci.org/smartholdem/smartholdem-rpc)
+
 SmartHoldem RPC Client
 
 git clone https://github.com/smartholdem/smartholdem-rpc.git
