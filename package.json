@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/smartholdem/smartholdem-rpc#readme",
   "dependencies": {
-    "sthjs": "git://github.com/smartholdem/sth-js.git",
+    "sthjs": "github:smartholdem/smartholdem-js#mainnet",
     "async": "^2.5.0",
     "bigi": "^1.4.2",
     "bip38": "^2.0.1",
