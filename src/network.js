@@ -136,7 +136,7 @@ function connect2network(netw, callback) {
   server = netw.peers[Math.floor(Math.random() * 1000) % netw.peers.length];
   findEnabledPeers(function (peers) {
     if (peers.length > 0) {
-      console.log(peers);
+      // console.log(peers);
       [server] = peers;
       netw.peers = peers;
     }
