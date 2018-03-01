@@ -14,7 +14,7 @@ If you do want to allow access from all remotes, start smartholdem-rpc with the 
 > `cd smartholdem-rpc`
 > `npm install`
 
-- start RPC server: `smartholdem-rpc --port 8000` (default port is 8080)
+- start RPC server: `smartholdem-rpc --port 8000` (default port is 8282)
 - or forever start server
 
 ## API
