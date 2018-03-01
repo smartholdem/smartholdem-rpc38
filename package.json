@@ -4,7 +4,7 @@
   "description": "RPC server acting as lite client for SmartHoldem blockchain",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --timeout 45000 --exit",
+    "test": "mocha --timeout 60000 --exit",
     "start": "nodemon ./server.js"
   },
   "bin": {
@@ -18,7 +18,8 @@
     "smartholdem",
     "cryptocurrency",
     "blockchain",
-    "rpc"
+    "rpc",
+    "daemon"
   ],
   "author": "smartholdem",
   "license": "MIT",
