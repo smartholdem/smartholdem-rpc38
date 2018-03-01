@@ -1,10 +1,10 @@
 {
   "name": "smartholdem-rpc",
-  "version": "1.0.1",
-  "description": "RPC server acting as client for SmartHoldem",
+  "version": "1.0.0",
+  "description": "RPC server acting as lite client for SmartHoldem blockchain",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --timeout 20000 --exit",
+    "test": "mocha --timeout 45000 --exit",
     "start": "nodemon ./server.js"
   },
   "bin": {
@@ -16,16 +16,17 @@
   },
   "keywords": [
     "smartholdem",
+    "cryptocurrency",
     "blockchain",
     "rpc"
   ],
+  "author": "smartholdem",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/smartholdem/smartholdem-rpc/issues"
   },
   "homepage": "https://github.com/smartholdem/smartholdem-rpc#readme",
   "dependencies": {
-    "sthjs": "git://github.com/smartholdem/sth-js.git",
     "async": "^2.5.0",
     "bigi": "^1.4.2",
     "bip38": "^2.0.1",
@@ -34,7 +35,8 @@
     "leveldown": "^2.0.0",
     "levelup": "^2.0.0",
     "request": "^2.83.0",
-    "restify": "^6.2.0"
+    "restify": "^6.2.0",
+    "sthjs": "github:smartholdem/sth-js"
   },
   "devDependencies": {
     "nodemon": "^1.12.1",

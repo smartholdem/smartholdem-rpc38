@@ -89,7 +89,7 @@ describe('Accounts', () => {
 
     it('it should find bip38 backup from userid', (done) => {
       chai.request(server).
-      get('/mainnet/account/bip38/${userid}').
+      get(`/mainnet/account/bip38/${userid}`).
       end((err, res) => {
         res.should.have.status(200);
         res.body.success.should.be.equal(true);
@@ -106,13 +106,13 @@ describe('Accounts', () => {
         bip38: "master password",
         userid,
         amount: 1000000000,
-        recipientId: "SjhmecmNzFpnbVWQygMZ15rYC8vKDdGkfz"
+        recipientId: "Sa9JKodiNeM7tbYjxwEhvvG1kBczhQxTN3"
       }).
       end((err, res) => {
         process.stdout.write(".");
         res.should.have.status(200);
         res.body.success.should.be.equal(true);
-        res.body.transaction.recipientId.should.equal("SVx2j3NdZbDLfZ9HWS57NvqYg4c9grQLnx");
+        res.body.transaction.recipientId.should.equal("Sa9JKodiNeM7tbYjxwEhvvG1kBczhQxTN3");
         sthjs.crypto.verify(res.body.transaction).should.be.equal(true);
         done();
       });
@@ -127,8 +127,8 @@ describe('Accounts', () => {
       end((err, res) => {
         res.should.have.status(200);
         res.body.success.should.be.equal(true);
-        res.body.account.address.should.be.equal("Tkx2APX2LjSpkuMWTELDi5tFjQQHdbF5bw");
-        res.body.account.publicKey.should.be.equal("03b3a346e339b3b48c915bee500e7ccd27faec42e0bd1324f0e848d975eeab28fc");
+        res.body.account.address.should.be.equal("TnA7H8XaWBjkLty13CEfPJ5NdhPprxGKnP");
+        res.body.account.publicKey.should.be.equal("03675c61dcc23eab75f9948c6510b54d34fced4a73d3c9f2132c76a29750e7a614");
         done();
       });
     });

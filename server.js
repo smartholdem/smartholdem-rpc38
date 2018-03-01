@@ -7,40 +7,40 @@ var network = require('./src/network');
 var program = require('commander');
 
 const allowedRemotes = [
-    "::1",
-    "127.0.0.1",
-    "::ffff:127.0.0.1"
+  "::1",
+  "127.0.0.1",
+  "::ffff:127.0.0.1"
 ];
 
 var server = null;
 
 function restrictHost(req, res, next){
-    var remote = req.connection.remoteAddress;
-    if (remote.startsWith("::ffff:")) remote = remote.replace("::ffff:", "");
-    if(program.allowRemote) return next();
-    else
+  var remote = req.connection.remoteAddress;
+  if (remote.startsWith("::ffff:")) remote = remote.replace("::ffff:", "");
+  if(program.allowRemote) return next();
+  else
     if(req.getRoute().path == '/:network/broadcast') return next();
     else
-    if(program.allow.includes(remote)) return next();
-    else
+      if(program.allow.includes(remote)) return next();
+      else
         for(let item of program.allow) {
-            let mask = item.split(/[\:\.]/);
-            let address = remote.split(/[\:\.]/);
-            let ok = true;
-            for (let i = 0; i < mask.length; i++)
-                if (mask[i] === "*") continue;
-                else
-                if (mask[i] !== address[i]) { ok = false; break; }
-                else continue;
-            if (ok) return next();
+          let mask = item.split(/[\:\.]/);
+          let address = remote.split(/[\:\.]/);
+          let ok = true;
+          for (let i = 0; i < mask.length; i++)
+            if (mask[i] === "*") continue;
+            else
+              if (mask[i] !== address[i]) { ok = false; break; }
+              else continue;
+          if (ok) return next();
         };
-    res.end();
+  res.end();
 }
 
 function startServer(port){
-    if (program.allowRemote) console.log('Warning! smartholdem-rpc allows remote connections, this is potentially insecure!');
+  if (program.allowRemote) console.log('Warning! smartholdem-rpc allows remote connections, this is potentially insecure!');
 
-    server = restify.createServer().
+  server = restify.createServer().
     use(restrictHost).
     use(restify.plugins.bodyParser({mapParams: true})).
     use(restify.plugins.queryParser({mapParams: true})).
@@ -56,23 +56,23 @@ function startServer(port){
     server.post('/:network/broadcast', transaction.broadcast);
 
     server.listen(port, function() {
-        console.log('smartholdem-rpc listening at %s', server.url);
+      console.log('smartholdem-rpc listening at %s', server.url);
     });
 }
 
 program.
-option('-p, --port <port>', 'The port to start server').
-option('--allow-remote', 'Allow all connections from sources other than localhost').
-option('--allow <address>', 'Add addresses to the whitelist. Allows usage of * for placeholder in addresses, eg. 192.168.178.* or 10.0.*.*.', (val, memo) => {
+  option('-p, --port <port>', 'The port to start server').
+  option('--allow-remote', 'Allow all connections from sources other than localhost').
+  option('--allow <address>', 'Add addresses to the whitelist. Allows usage of * for placeholder in addresses, eg. 192.168.178.* or 10.0.*.*.', (val, memo) => {
     memo.push(val);
     return memo;
-}, allowedRemotes).
-parse(process.argv);
+  }, allowedRemotes).
+  parse(process.argv);
 
 if(program.port)
-    startServer(program.port);
+  startServer(program.port);
 else
-    startServer(8080);
+  startServer(8080);
 
 // For testing purpose
 module.exports = server;

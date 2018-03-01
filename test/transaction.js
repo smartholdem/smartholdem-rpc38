@@ -44,13 +44,13 @@ describe('Transactions', () => {
         post('/mainnet/transaction').
         send({
           amount: 100000000,
-          recipientId: "Sa9JKodiNeM7tbYjxwEhvvG1kBczhQxTN3",
-          passphrase: "This is a test"
+          recipientId: "SgfSC4H3AViZHwf1MeXaThsvJBThwV1AS9",
+          passphrase: "this is a test"
         }).
         end((err, res) => {
           res.should.have.status(200);
           res.body.success.should.be.equal(true);
-          res.body.transaction.recipientId.should.equal("SVx2j3NdZbDLfZ9HWS57NvqYg4c9grQLnx");
+          res.body.transaction.recipientId.should.equal("SgfSC4H3AViZHwf1MeXaThsvJBThwV1AS9");
           mainnettx = res.body.transaction;
           sthjs.crypto.verify(mainnettx).should.be.equal(true);
           done();
@@ -74,13 +74,13 @@ describe('Transactions', () => {
         post('/testnet/transaction').
         send({
           amount: 100000000,
-          recipientId: "Tkx2APX2LjSpkuMWTELDi5tFjQQHdbF5bw",
-          passphrase: "This is a test"
+          recipientId: "TnA7H8XaWBjkLty13CEfPJ5NdhPprxGKnP",
+          passphrase: "this is a test"
         }).
         end((err, res) => {
           res.should.have.status(200);
           res.body.success.should.be.equal(true);
-          res.body.transaction.recipientId.should.equal("Tkx2APX2LjSpkuMWTELDi5tFjQQHdbF5bw");
+          res.body.transaction.recipientId.should.equal("TnA7H8XaWBjkLty13CEfPJ5NdhPprxGKnP");
           testnettx = res.body.transaction;
           sthjs.crypto.verify(testnettx).should.be.equal(true);
           done();
