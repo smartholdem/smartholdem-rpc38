@@ -72,7 +72,7 @@ program.
 if(program.port)
   startServer(program.port);
 else
-  startServer(8080);
+  startServer(8081);
 
 // For testing purpose
 module.exports = server;
