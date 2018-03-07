@@ -68,6 +68,7 @@ describe('Accounts', () => {
     var bip38address = null;
     var bip38backup = null;
     var userid = require('crypto').randomBytes(32).toString("hex");
+    console.log(userid);
 
     it('it should create an account on mainnet using bip38 encryption', (done) => {
       chai.request(server).
