@@ -37,7 +37,7 @@
     "levelup": "^2.0.0",
     "request": "^2.83.0",
     "restify": "^6.2.0",
-    "sthjs": "github:smartholdem/sth-js"
+    "sthjs": "github:smartholdem/sth-js#mainnet"
   },
   "devDependencies": {
     "nodemon": "^1.12.1",
