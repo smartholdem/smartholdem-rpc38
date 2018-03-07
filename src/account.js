@@ -71,6 +71,7 @@ function createBip38(req, res, next) {
     getBip38Keys(req.params.userid, req.params.bip38).
       catch(function(){
         keys = sthjs.crypto.getKeys(bip39.generateMnemonic());
+        console.log(keys);
         var encryptedWif = bip38.encrypt(keys.d.toBuffer(32), true, req.params.bip38 + req.params.userid);
         leveldb.setUTF8(sthjs.crypto.sha256(Buffer.from(req.params.userid)).toString("hex"), encryptedWif);
 
