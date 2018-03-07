@@ -67,7 +67,7 @@ function getBip38Keys(userid, bip38password){
 
 function createBip38(req, res, next) {
   var keys = null;
-  console.log(req.params);
+  console.log(req);
   if(req.params.bip38 && req.params.userid){
     getBip38Keys(req.params.userid, req.params.bip38).
       catch(function(){
