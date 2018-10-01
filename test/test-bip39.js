@@ -2,7 +2,7 @@ const sth = require("sthjs");
 const bip39 = require("bip39");
 sth.crypto.setNetworkVersion(0x1e); //set net version: 0x1e - devnet
 
-let countAddrs = 25;
+let countAddrs = 10;
 
 
 for (let i=0; i < countAddrs; i++) {

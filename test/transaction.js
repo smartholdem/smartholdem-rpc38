@@ -23,10 +23,11 @@ describe('Transactions', () => {
         });
     });
 
-    it('it should GET last account transactions on testnet', (done) => {
+    it('it should GET last account transactions on devnet', (done) => {
       chai.request(server).
-        get('/testnet/transactions/Tkx2APX2LjSpkuMWTELDi5tFjQQHdbF5bw').
+        get('/devnet/transactions/DDvQP9DznpeENdA7BQ6nYZgYwHmnbmWXS5').
         end((err, res) => {
+          console.log('res.body.count', res.body.count);
           res.should.have.status(200);
           res.body.success.should.be.equal(true);
           res.body.count.should.be.above(30);
@@ -68,46 +69,47 @@ describe('Transactions', () => {
         });
     });
 
-    let testnettx = null;
-    it('it should create tx on testnet and tx should verify', (done) => {
+    let devnettx = null;
+    it('it should create tx on devnet and tx should verify', (done) => {
       chai.request(server).
-        post('/testnet/transaction').
+        post('/devnet/transaction').
         send({
-          amount: 100000000,
-          recipientId: "TnA7H8XaWBjkLty13CEfPJ5NdhPprxGKnP",
+          amount: 10000000,
+          recipientId: "DHzPqDoCwh4CuHwtA6FBvnH3yY7sJmZ54P",
           passphrase: "this is a test"
         }).
         end((err, res) => {
           res.should.have.status(200);
           res.body.success.should.be.equal(true);
-          res.body.transaction.recipientId.should.equal("TnA7H8XaWBjkLty13CEfPJ5NdhPprxGKnP");
-          testnettx = res.body.transaction;
-          sthjs.crypto.verify(testnettx).should.be.equal(true);
+          res.body.transaction.recipientId.should.equal("DHzPqDoCwh4CuHwtA6FBvnH3yY7sJmZ54P");
+          devnettx = res.body.transaction;
+          sthjs.crypto.verify(devnettx).should.be.equal(true);
           done();
         });
     });
 
-    it('it should broadcast tx on testnet', (done) => {
+    it('it should broadcast tx on devnet', (done) => {
       chai.request(server).
-        post('/testnet/broadcast').
-        send(testnettx).
+        post('/devnet/broadcast').
+        send(devnettx).
         end((err, res) => {
+          console.log(res.body);
           res.should.have.status(200);
           res.body.success.should.be.equal(true);
           done();
         });
     });
 
-    it('it should broadcast tx on testnet the old way', (done) => {
+    it('it should broadcast tx on devnet the old way', (done) => {
       chai.request(server).
-        post('/testnet/broadcast').
+        post('/devnet/broadcast').
         send({
-          transactions: [testnettx]
+          transactions: [devnettx]
         }).
         end((err, res) => {
           res.should.have.status(200);
           res.body.success.should.be.equal(true);
-          res.body.transactionIds[0].should.be.equal(testnettx.id);
+          res.body.transactionIds[0].should.be.equal(devnettx.id);
           done();
         });
     });

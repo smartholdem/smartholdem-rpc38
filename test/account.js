@@ -22,22 +22,22 @@ describe('Accounts', () => {
       });
     });
 
-    it('it should GET account with a given address on testnet', (done) => {
+    it('it should GET account with a given address on devnet', (done) => {
       chai.request(server).
-      get('/testnet/account/Tkx2APX2LjSpkuMWTELDi5tFjQQHdbF5bw').
+      get('/devnet/account/DHzPqDoCwh4CuHwtA6FBvnH3yY7sJmZ54P').
       end((err, res) => {
         res.should.have.status(200);
         res.body.success.should.be.equal(true);
-        res.body.account.address.should.be.equal("Tkx2APX2LjSpkuMWTELDi5tFjQQHdbF5bw");
+        res.body.account.address.should.be.equal("DHzPqDoCwh4CuHwtA6FBvnH3yY7sJmZ54P");
         done();
       });
     });
 
-    // it('STRESSTEST: it should GET 50000 accounts on testnet', (done) => {
+    // it('STRESSTEST: it should GET 50000 accounts on devnet', (done) => {
     //   for(var i=0; i<50000; i++){
     //     var address = sthjs.crypto.getKeys(bip39.generateMnemonic()).getAddress();
     //     chai.request(server).
-    //     get('/testnet/account/'+address).
+    //     get('/devnet/account/'+address).
     //     end((err, res) => {
     //       res.should.have.status(200);
     //       res.body.success.should.be.equal(true);
@@ -119,16 +119,16 @@ describe('Accounts', () => {
       });
     });
 
-    it('it should create an account on testnet', (done) => {
+    it('it should create an account on devnet', (done) => {
       chai.request(server).
-      post('/testnet/account').
+      post('/devnet/account').
       send({
         passphrase: "this is a test"
       }).
       end((err, res) => {
         res.should.have.status(200);
         res.body.success.should.be.equal(true);
-        res.body.account.address.should.be.equal("TnA7H8XaWBjkLty13CEfPJ5NdhPprxGKnP");
+        res.body.account.address.should.be.equal("DHzPqDoCwh4CuHwtA6FBvnH3yY7sJmZ54P");
         res.body.account.publicKey.should.be.equal("03675c61dcc23eab75f9948c6510b54d34fced4a73d3c9f2132c76a29750e7a614");
         done();
       });
