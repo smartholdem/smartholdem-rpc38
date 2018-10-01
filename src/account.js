@@ -5,6 +5,44 @@ var BigInteger = require('bigi');
 var network = require('./network');
 var leveldb = require('./leveldb');
 
+
+function generate(req, res, next) {
+
+    if (req.params["network"] === "devnet") {
+        sthjs.crypto.setNetworkVersion(0x1e); //set net version: 0x1e - devnet
+    } else {
+        sthjs.crypto.setNetworkVersion(0x3f); //set net version: mainnet
+    }
+
+
+    let result = [];
+    let count = req.params["count"];
+    if (count > 1000) {
+        count = 1000;
+    }
+
+    if (count < 1) {
+        count = 1;
+    }
+
+    for (let i=0; i < count; i++) {
+        let PASSPHRASE = bip39.generateMnemonic();
+        let PUB_KEY = sthjs.crypto.getKeys(PASSPHRASE).publicKey;
+        let ADDR = sthjs.crypto.getAddress(PUB_KEY);
+
+        result.push({
+            "address": ADDR,
+            "pubkey": PUB_KEY,
+            "pass": PASSPHRASE
+        });
+
+    }
+
+    res.json(result);
+    // res.send(result);
+    next();
+}
+
 function get(req, res, next) {
   network.getFromNode(`/api/accounts?address=${req.params.address}`, function (err, response, body) {
     if(err) next();
@@ -129,6 +167,7 @@ function create(req, res, next) {
 }
 
 module.exports = {
+  generate,
   get,
   getBip38Account,
   getBip38Keys,

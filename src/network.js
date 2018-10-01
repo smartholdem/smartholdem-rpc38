@@ -66,12 +66,12 @@ function getFromNode(url, cb) {
 function findEnabledPeers(cb) {
   var peers = [];
   getFromNode('/peer/list', function (err, response, body) {
-    if (err || body == "undefined") {
+    if (err || body === "undefined") {
       cb(peers);
     }
     var respeers = JSON.parse(body).peers.
     filter(function (peer) {
-      return peer.status == "OK";
+      return peer.status === "OK";
     }).
     map(function (peer) {
       return `${peer.ip}:${peer.port}`;

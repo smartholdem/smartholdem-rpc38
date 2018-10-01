@@ -19,7 +19,7 @@ function restrictHost(req, res, next){
   if (remote.startsWith("::ffff:")) remote = remote.replace("::ffff:", "");
   if(program.allowRemote) return next();
   else
-    if(req.getRoute().path == '/:network/broadcast') return next();
+    if(req.getRoute().path === '/:network/broadcast') return next();
     else
       if(program.allow.includes(remote)) return next();
       else
@@ -48,6 +48,7 @@ function startServer(port){
 
     server.get('/:network/account/bip38/:userid', account.getBip38Account);
     server.get('/:network/account/:address', account.get);
+    server.get('/:network/account/generate/:count', account.generate);
     server.post('/:network/account/bip38', account.createBip38);
     server.post('/:network/account', account.create);
     server.get('/:network/transactions/:address', account.getTransactions);
