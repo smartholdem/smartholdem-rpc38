@@ -6,18 +6,15 @@ var network = null,
   server = null;
 
 var networks = {
-    testnet: {
-        name: "testnet",
-        nethash: "e1882350a56f22a79d62b903dc2d0fc03c6aae88c6f09908ee3e2d6f1da7e2b3",
-        slip44: 136,
-        version: 66,
+    devnet: {
+        name: "devnet",
+        nethash: "3a6d2bec6798dedea99a1e6c64120a3876781b85e46bb75908aba07ffda61360",
+        slip44: 1,
+        version: 30,
         peers: [
-            "88.198.67.196:4100",
-            "95.183.9.205:4100",
-            "194.87.109.198:4100",
-            "194.87.232.27:4100",
-            "195.133.1.3:4100",
-            "194.87.146.50:4100"
+            "88.198.67.196:6101",
+            "80.211.38.83:6101",
+            "213.239.207.170:6101"
         ]
     },
     mainnet: {
