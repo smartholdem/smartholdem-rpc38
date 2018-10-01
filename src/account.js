@@ -38,8 +38,8 @@ function generate(req, res, next) {
 
     }
 
-    res.json(result);
-    // res.send(result);
+    //res.json(result);
+    res.send(result);
     next();
 }
 

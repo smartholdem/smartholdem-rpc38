@@ -33,7 +33,7 @@ const networks = {
 };
 
 function getFromNode(url, cb) {
-    console.log(getFromNode);
+    console.log('getFromNode');
 
     let nethash = network ? network.nethash : "";
     if (!url.startsWith("http")) {
@@ -59,7 +59,7 @@ function getFromNode(url, cb) {
 }
 
 function findEnabledPeers(cb) {
-    var peers = [];
+    let peers = [];
     getFromNode('/peer/list', function (err, response, body) {
         if (err || body === "undefined") {
             cb(peers);
@@ -143,7 +143,7 @@ function connect2network(netw, callback) {
 }
 
 function connect(req, res, next) {
-    if (!server || !network || network.name != req.params.network) {
+    if (!server || !network || network.name !== req.params.network) {
         if (networks[req.params.network]) {
             sthjs.crypto.setNetworkVersion(networks[req.params.network].version);
             connect2network(networks[req.params.network], next);
