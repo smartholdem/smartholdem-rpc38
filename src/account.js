@@ -146,7 +146,7 @@ function createBip38(req, res, next) {
 }
 
 function create(req, res, next) {
-  var account = null;
+  let account = null;
   if(req.params.passphrase){
     account = sthjs.crypto.getKeys(req.params.passphrase);
     res.send({
