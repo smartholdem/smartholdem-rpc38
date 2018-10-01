@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/smartholdem/smartholdem-rpc.svg?branch=master)](https://travis-ci.org/smartholdem/smartholdem-rpc)
 # RPC server implementation to easily connect to SmartHoldem Platform
 
 # Security Warning
