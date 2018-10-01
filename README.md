@@ -25,6 +25,7 @@ Supported networks are `mainnet` and `testnet` all calls should start with the n
 - Create account from `passphrase`: `POST /:network/account` params: `passphrase`
 - Create (or get if already existing) account and encrypt using bip38: `POST /:network/account/bip38` params: `bip38` (password for encrypted WIF), `userid` (to identify a user)
 - Get backup from `userid`: `GET /:network/account/bip38/:userid`
+- Generate BIP39 accounts: `GET /:network/account/generate/:count`
 
 If you want to create several accounts for one user, you need to use a different userid.
 
