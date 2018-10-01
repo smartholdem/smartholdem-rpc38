@@ -33,9 +33,9 @@ const networks = {
 };
 
 function getFromNode(url, cb) {
-    console.log('getFromNode');
 
     let nethash = network ? network.nethash : "";
+
     if (!url.startsWith("http")) {
         url = `http://${server}${url}`;
     }
@@ -71,7 +71,7 @@ function findEnabledPeers(cb) {
         });
         async.each(respeers, function (peer, eachcb) {
             getFromNode(`http://${peer}/api/blocks/getHeight`, function (error, res, body2) {
-                if (!error && body2 != "Forbidden") {
+                if (!error && body2 !== "Forbidden") {
                     peers.push(peer);
                 }
                 eachcb();
@@ -124,6 +124,7 @@ function broadcast(transaction, callback) {
 function connect2network(netw, callback) {
     network = netw;
     server = netw.peers[Math.floor(Math.random() * 1000) % netw.peers.length];
+    console.log('connect2network', server);
     findEnabledPeers(function (peers) {
         if (peers.length > 0) {
             // console.log(peers);

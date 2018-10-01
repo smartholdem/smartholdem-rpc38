@@ -1,9 +1,9 @@
-var sthjs = require('sthjs');
-var bip39 = require('bip39');
-var bip38 = require('bip38');
-var BigInteger = require('bigi');
-var network = require('./network');
-var leveldb = require('./leveldb');
+const sthjs = require('sthjs');
+const bip39 = require('bip39');
+const bip38 = require('bip38');
+const BigInteger = require('bigi');
+const network = require('./network');
+const leveldb = require('./leveldb');
 
 
 function generate(req, res, next) {
@@ -17,8 +17,8 @@ function generate(req, res, next) {
 
     let result = [];
     let count = req.params["count"];
-    if (count > 1000) {
-        count = 1000;
+    if (count > 500) {
+        count = 500;
     }
 
     if (count < 1) {
