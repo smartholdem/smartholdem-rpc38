@@ -49,7 +49,7 @@ function getFromNode(url, cb) {
       url,
       headers: {
         nethash,
-        version: '2.0.0',
+        version: '1.0.0',
         port: 1
       },
       timeout: 5000
